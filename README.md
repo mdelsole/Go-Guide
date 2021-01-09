@@ -7,6 +7,7 @@ A friendly guide to the Go programming language. Written by me!
 <!--ts-->
    * [What is Go?](#What-is-Go?)
    * [The Basics](#The-Basics)
+   * [Program Structure](#Program-Structure)
 <!--te-->
 
 # What is Go?
@@ -54,4 +55,36 @@ Compiling creates an executable file in the same directory that the go file was 
 ```Hello World```
 
 You might think it's a little annoying to have to make an executable and then run it every time you make a change. Thankfully, go has another command, ```go run```. This command will skip the executable and just run your program directly. Try it out with ```go run test.go```. Typically, we'll use ```go run``` while developing, and once we're done we'll use ```go build``` to output the executable as our final product.
+
+# Program Structure
+
+Okay, now that we've seen how the langauge works, it's time to start learning how to program in it. We'll start by dissecting that program we wrote earlier:
+
+```
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello World")
+}
+```
+
+## Packages
+
+The first line of our program is ```package main```. This is called a **package declaration**, and every Go file starts with one. The package declaration informs the compiler whether to create an *executable* or a *library*. 
+
+If you're a seasoned programmer, you may be familiar with the difference between these two, but I'll explain anyway. An **executable** is something that runs on its own. In bigger programs, an executable might be an individual process that runs, with your program made up of many processes. A **library** doesn't run on its own. It is a collection of code that can be used by the executable(s).
+
+Programs that have a package decalaration of ```package main``` will create an executable file. Note that the package name does not have to be the same name as the directory its in or the name of the file itself. Rather, the ```main``` in ```package main``` is a keyword that tells the go compiler to make an executable.
+
+We'll talk about this more later, but if the program has a package declaration of anything other than ```main```, the compiler will create a package archive file, also known as a *library* file.
+
+## Imports
+
+The next line is ```import "fmt"```. Import statements let us bring in code from other packages; they allow us to use libraries. We only want to import the packages we need so as not to bloat the code.
+
+```fmt``` is the "format" package built in to go. It's analogous to C's ```printf``` and ```scanf```. 
+
+## Functions
 
